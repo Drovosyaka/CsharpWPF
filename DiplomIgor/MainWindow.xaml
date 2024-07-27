@@ -1,0 +1,277 @@
+﻿<Window x:Class="DiplomIgor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:uc="clr-namespace:DiplomIgor.UserControls"
+        Height="700" Width="1050" ResizeMode="NoResize" AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen" WindowStyle="None" Background="Transparent"
+        MouseDown="Window_MouseDown">
+    <Border Background="White" CornerRadius="40" MouseDown="Border_MouseDown">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="220"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+
+            <!--Menu-->
+            <Border Background="White" CornerRadius="40 0 0 40" Grid.RowSpan="2">
+                <StackPanel Margin="0 30 0 0">
+                    <!--Ellipses-->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="63 10 0 10">
+                        <Ellipse Fill="#ff6258" Width="10" Height="10"/>
+                        <Ellipse Fill="#ffbf2f" Width="10" Height="10" Margin="7 0"/>
+                        <Ellipse Fill="#2acb42" Width="10" Height="10"/>
+                    </StackPanel>
+
+                    <TextBlock Text="Кабинет" Style="{StaticResource menuTitle}"/>
+
+                    <Button x:Name="MainMain" Style="{StaticResource menuButton}" Background="#02be68" Foreground="White" Click="MainButton">
+                        <Grid>
+                            <TextBlock Text="Главная" Margin="0 0 0 2"/>
+                            <Icon:PackIconMaterial x:Name="SelectedMain" Style="{StaticResource menuButtonIcon}" Visibility="Visible"/>
+                        </Grid>
+                    </Button>
+
+                    <Button x:Name="MainPlaylist" Style="{StaticResource menuButton}" Click="OpenButton">
+                        <Grid>
+                            <TextBlock Text="Плейлист" Margin="0 0 0 2"/>
+                            <Icon:PackIconMaterial x:Name="SelectedPlaylist" Style="{StaticResource menuButtonIcon}"/>
+                        </Grid>
+                    </Button>
+
+                    <Button x:Name="MainCategory" Style="{StaticResource menuButton}" Click="OpenCategory">
+                        <Grid>
+                            <TextBlock Text="Направления" Margin="0 0 0 2"/>
+                            <Icon:PackIconMaterial x:Name="SelectedCategory" Style="{StaticResource menuButtonIcon}"/>
+                        </Grid>
+                    </Button>
+                    <Button Visibility="Collapsed" Style="{StaticResource ButtonTimeShow}" x:Name="ButtonUpload" Width="100" Height="40" Content="Подтвердить" Click="AddCat1"/>
+
+
+                    <!--
+                    <Button Style="{StaticResource menuButton}">
+                        <Grid>
+                            <TextBlock Text="История?" Margin="0 0 0 2"/>
+                            <Icon:PackIconMaterial Style="{StaticResource menuButtonIcon}"/>
+                        </Grid>
+                    </Button>
+
+                    <TextBlock Text="Доп опции" Style="{StaticResource menuTitle}"/>
+
+                    <Button Style="{StaticResource menuButton}">
+                        <Grid>
+                            <TextBlock Text="UNKNOWN" Margin="0 0 0 2"/>
+                            <Icon:PackIconMaterial Style="{StaticResource menuButtonIcon}"/>
+                        </Grid>
+                    </Button>
+
+                    <Button Style="{StaticResource menuButton}">
+                        <Grid>
+                            <TextBlock Text="UNKNOWN" Margin="0 0 0 2"/>
+                            <Icon:PackIconMaterial Style="{StaticResource menuButtonIcon}"/>
+                        </Grid>
+                    </Button>
+
+                    <Button Style="{StaticResource menuButton}">
+                        <Grid>
+                            <TextBlock Text="UNKNOWN" Margin="0 0 0 2"/>
+                            <Icon:PackIconMaterial Style="{StaticResource menuButtonIcon}"/>
+                        </Grid>
+                    </Button>
+                    -->
+                </StackPanel>
+            </Border>
+
+            <!--Music Section-->
+            <StackPanel Grid.Column="1" Background="White" Margin="40 60 10 0">
+                <TextBlock Text="Кабинет" Style="{StaticResource titleText}"/>
+
+                <Border CornerRadius="20" Margin="0 20 0 0">
+                    <Border.Background>
+                        <LinearGradientBrush>
+                            <GradientStop Color="#30ad9a" Offset="0"/>
+                            <GradientStop Color="#18c274" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="0.4" Color="#1fae7e"/>
+                    </Border.Effect>
+
+                    <Grid>
+                        <Border Opacity="0.7" CornerRadius="20">
+                            <Border.Background>
+                                <ImageBrush ImageSource="/Images/CDEK.png"/>
+                            </Border.Background>
+                        </Border>
+
+                        <StackPanel x:Name="SongStackPanel" Margin="30">
+                            <TextBlock Text="Направления на день" Foreground="White" FontSize="26" FontWeight="Bold"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </StackPanel>
+
+            <!--Right Section-->
+            <Border x:Name="Grid2Main" Grid.Column="2" CornerRadius="0 40 0 0" Background="White" Margin="0 22 0 0">
+                <StackPanel Margin="30 50 30 0">
+                    <TextBlock Text="Назначил направление" Style="{StaticResource titleText}" Margin="0 0 0 10" FontSize="28"/>
+                    <!--
+                    <uc:PopularSong Title="Иван Иванов" Time="10:30" Image="/Images/p1.png"/>
+                    <uc:PopularSong Title="Степан Игоревич" Time="14:00" Image="/Images/p2.jpg" IsActive="True"/>
+                    <uc:PopularSong Title="Игорь Александрович" Time="16:25" Image="/Images/p3.png"/>
+                    <uc:PopularSong Title="Алексей Алексеевич" Time="16:50" Image="/Images/p4.jpg"/>
+                    
+                        Popular
+                    <TextBlock Text="Назначил направление" Style="{StaticResource titleText}" Margin="0 0 0 10" FontSize="28"/>
+                    -->
+                </StackPanel>
+            </Border>
+
+            <Border x:Name="Grid2Music" Grid.Column="2" Visibility="Collapsed" CornerRadius="0 40 0 0" Background="White" Margin="0 22 0 0">
+                <StackPanel Margin="30 50 30 0">
+                    <TextBlock Text="Плейлист" Style="{StaticResource titleText}" Margin="0 0 0 10" FontSize="28"/>
+                    <MediaElement x:Name="MyMediaElement" LoadedBehavior="Manual" />
+                    <ListBox x:Name="TrackList" Margin="0 0 0 10" Background="White" Height="450" MouseDoubleClick="TrackListt">
+
+                    </ListBox>
+
+                </StackPanel>
+            </Border>
+
+            <Border x:Name="Grid2Category" Visibility="Collapsed" Grid.Column="2" CornerRadius="0 40 0 0" Background="White" Margin="0 22 0 0">
+                <StackPanel Margin="30 50 30 0">
+                    <TextBlock Text="Назначить направленние" Style="{StaticResource titleText}" Margin="0 0 0 10" FontSize="28"/>
+                    <MediaElement LoadedBehavior="Manual" />
+
+                    <uc:PopularSong Title="Лекционный день" MouseDoubleClick="SetTimeButton_Click1"/>
+                    <Grid Visibility="Collapsed" x:Name="TimeWindow1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="103*"/>
+                            <ColumnDefinition Width="252*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="HoursTextBox1" Margin="10,0,0,0" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBox x:Name="MinutesTextBox1" Margin="49,0,0,0" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1"/>
+                        <TextBlock x:Name="TimeTextBlock1" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="24" Grid.Column="1" />
+
+                    </Grid>
+
+
+
+                    <uc:PopularSong Title="Рабочий день" MouseDoubleClick="SetTimeButton_Click2"/>
+                    <Grid x:Name="TimeWindow2" Visibility="Collapsed">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="103*"/>
+                            <ColumnDefinition Width="252*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="HoursTextBox2" Margin="10,0,0,0" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBox x:Name="MinutesTextBox2" Margin="49,0,0,0" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1"/>
+                        <TextBlock x:Name="TimeTextBlock2" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="24" Grid.Column="1" />
+                        <Button Visibility="Collapsed" Style="{StaticResource ButtonTimeShow}" HorizontalAlignment="Right" Width="100" Height="40" Content="LOGIN"/>
+                    </Grid>
+                    <uc:PopularSong Title="Пункт выдачи" MouseDoubleClick="SetTimeButton_Click3"/>
+                    <Grid x:Name="TimeWindow3" Visibility="Collapsed">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="103*"/>
+                            <ColumnDefinition Width="252*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="HoursTextBox3" Margin="10,0,0,0" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBox x:Name="MinutesTextBox3" Margin="49,0,0,0" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1"/>
+                        <TextBlock x:Name="TimeTextBlock3" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="24" Grid.Column="1" />
+                        <Button Visibility="Collapsed" Style="{StaticResource ButtonTimeShow}" HorizontalAlignment="Right" Width="100" Height="40" Content="LOGIN"/>
+                    </Grid>
+                    <uc:PopularSong Title="Реклама" MouseDoubleClick="SetTimeButton_Click4"/>
+                    <Grid x:Name="TimeWindow4" Visibility="Collapsed">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="103*"/>
+                            <ColumnDefinition Width="252*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="HoursTextBox4" Margin="10,0,0,0" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBox x:Name="MinutesTextBox4" Margin="49,0,0,0" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1"/>
+                        <TextBlock x:Name="TimeTextBlock4" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="24" Grid.Column="1" />
+                        <Button Visibility="Collapsed" Style="{StaticResource ButtonTimeShow}" HorizontalAlignment="Right" Width="100" Height="40" Content="LOGIN"/>
+                    </Grid>
+                    <uc:PopularSong Title="Перерыв" MouseDoubleClick="SetTimeButton_Click5"/>
+                    <Grid x:Name="TimeWindow5" Visibility="Collapsed">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="103*"/>
+                            <ColumnDefinition Width="252*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="HoursTextBox5" Margin="10,0,0,0" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBox x:Name="MinutesTextBox5" Margin="49,0,0,0" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1"/>
+                        <TextBlock x:Name="TimeTextBlock5" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="24" Grid.Column="1" />
+                        <Button Visibility="Collapsed" Style="{StaticResource ButtonTimeShow}" HorizontalAlignment="Right" Width="100" Height="40" Content="LOGIN"/>
+                    </Grid>
+                    <uc:PopularSong Title="Собеседование" MouseDoubleClick="SetTimeButton_Click6"/>
+                    <Grid x:Name="TimeWindow6" Visibility="Collapsed">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="103*"/>
+                            <ColumnDefinition Width="252*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="HoursTextBox6" Margin="10,0,0,0" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBox x:Name="MinutesTextBox6" Margin="49,0,0,0" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1"/>
+                        <TextBlock x:Name="TimeTextBlock6" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="24" Grid.Column="1" />
+                        <Button Visibility="Collapsed" Style="{StaticResource ButtonTimeShow}" HorizontalAlignment="Right" Width="100" Height="40" Content="LOGIN"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <!--Player-->
+            <Border Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Background="#03bf69" CornerRadius="40 0 40 0" Margin="40 0 0 0">
+                <StackPanel Orientation="Horizontal">
+
+                    <Ellipse Width="60" Height="60" Margin="30 0 0 0">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="/Images/nota1.jpg"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+
+                    <StackPanel VerticalAlignment="Center" Margin="20 0 30 0">
+                        <TextBlock x:Name="TitleTrack" Text="ME" Foreground="White" FontSize="16" FontWeight="Bold" MaxWidth="120" TextWrapping="Wrap"/>
+                    </StackPanel>
+
+                    <Button Style="{StaticResource playerButton}" Click="SkipPrevious">
+                        <Icon:PackIconMaterial Kind="SkipPrevious" Style="{StaticResource playerButtonIcon}"/>
+                    </Button>
+
+                    <Button x:Name="Pause" Style="{StaticResource playerButton}" Visibility="Collapsed" Click="StopPlayButton">
+                        <Icon:PackIconMaterial Kind="Pause" Style="{StaticResource playerButtonIcon}"/>
+                    </Button>
+
+                    <Button x:Name="Play" Style="{StaticResource playerButton}" Click="StopPlayButton">
+                        <Icon:PackIconMaterial Kind="Play" Style="{StaticResource playerButtonIcon}"/>
+                    </Button>
+
+                    <Button Style="{StaticResource playerButton}" Click="SkipNext">
+                        <Icon:PackIconMaterial Kind="SkipNext" Style="{StaticResource playerButtonIcon}"/>
+                    </Button>
+
+                    <Slider Style="{DynamicResource SliderStyle1}" x:Name="slider" IsSelectionRangeEnabled="True" VerticalAlignment="Center" Value="5" Width="350" SelectionEnd="{Binding ElementName=slider, Path=Value}"/>
+
+                    <Button x:Name="Unmute" Style="{StaticResource playerButton}"  Click="MuteUnmute">
+                        <Icon:PackIconMaterial Kind="VolumeHigh" Style="{StaticResource playerButtonIcon}"/>
+                    </Button>
+
+                    <Button x:Name="Mute" Style="{StaticResource playerButton}" Visibility="Collapsed" Click="MuteUnmute">
+                        <Icon:PackIconMaterial Kind="VolumeMute" Style="{StaticResource playerButtonIcon}"/>
+                    </Button>
+
+                </StackPanel>
+            </Border>
+
+            <Border Background="White" CornerRadius="40 0 0 40" Grid.Row="2" Grid.ColumnSpan="1">
+                <StackPanel VerticalAlignment="Center" Margin="20 0 30 0">
+                    <TextBlock Text="Текущее время:" Foreground="Black" FontSize="18" FontWeight="Bold"/>
+                    <TextBlock VerticalAlignment="Stretch" x:Name="TimeDisplay" Foreground="Black" FontSize="23" FontWeight="Bold"/>
+                </StackPanel>
+            </Border>
+
+        </Grid>
+    </Border>
+</Window>
